@@ -4,7 +4,11 @@ type BreadType = "rye" | "brown" | "white";
 
 type Filling = "cheese" | "ham" | "salami";
 
-type Sandwich = unknown;
+type Sandwich = `${BreadType} sandwich with ${Filling}`;
+
+const sandwich: Sandwich = "brown sandwich with cheese";
+const sandwich2: Sandwich = "black sandwich with cheese";
+
 
 type tests = [
   Expect<
