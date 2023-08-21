@@ -14,6 +14,10 @@ export type Event =
       event: KeyboardEvent;
     };
 
-type ClickEvent = unknown;
+type ClickEvent = Extract<Event, {type: "click"}>;
+
+type Fruits = 'apple' | 'banana' | 'pineaplle';
+
+type Apple = Extract<Fruits, 'apple'>;
 
 type tests = [Expect<Equal<ClickEvent, { type: "click"; event: MouseEvent }>>];

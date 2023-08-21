@@ -22,6 +22,17 @@ type A =
       c: string;
     };
 
+
+    const getDescrminatedUniontype = (union: A) => {
+      if(union.type === 'a') {
+        union.a
+      } else if(union.type === 'b') {
+        union.b
+      } else {
+        union.c
+      }
+    }
+
 type B = "a" | "b" | "c";
 
 enum C {
