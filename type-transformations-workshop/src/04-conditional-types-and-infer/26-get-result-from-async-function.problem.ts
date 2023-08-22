@@ -1,3 +1,4 @@
+import { Await } from "ts-toolbelt/out/Any/Await";
 import { Equal, Expect } from "../helpers/type-utils";
 
 const getServerSideProps = async () => {
@@ -10,7 +11,13 @@ const getServerSideProps = async () => {
   };
 };
 
-type InferPropsFromServerSideFunction = unknown;
+type InferPropsFromServerSideFunction<T extends () => Promise<unknown>> = Await<ReturnType<T>> extends {props: infer Payload} ? Payload : never;
+
+type InferPropsFromServerSideFunction2<T> = T extends () => Promise<{props: infer P}>? P : never;
+
+
+type Test = InferPropsFromServerSideFunction<typeof getServerSideProps>
+type Test2 = InferPropsFromServerSideFunction2<typeof getServerSideProps>
 
 type tests = [
   Expect<
