@@ -13,6 +13,10 @@ const getBg = createClassNamesFactory({
   secondary: "bg-gray-500",
 });
 
+const res = getBg("primary");
+//    ^?
+
+
 it("Should let you create classes from a className factory", () => {
   expect(getBg("primary")).toEqual("bg-blue-500");
   expect(getBg("secondary")).toEqual("bg-gray-500");

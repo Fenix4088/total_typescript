@@ -101,3 +101,10 @@ it("Should properly match the function's arguments", () => {
 
   func(1, "1");
 });
+
+type A = {
+  a: string;
+}
+
+type B = A;
+//        ^?
