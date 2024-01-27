@@ -3,7 +3,12 @@ import { Equal, Expect } from "../helpers/type-utils";
 /**
  * This time, let's solve this with function overloads!
  */
-const returnWhatIPassIn = (t: unknown) => {
+
+type ReturnWhatIPass = {
+  (p: 1): 1;
+  (p: "matt"): "matt"
+}
+const returnWhatIPassIn: ReturnWhatIPass = (t: any) => {
   return t;
 };
 
