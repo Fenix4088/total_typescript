@@ -1,9 +1,10 @@
 import { expect, it } from "vitest";
 import { Equal, Expect } from "../helpers/type-utils";
 
-const makeFormValidatorFactory = (validators: unknown) => (config: unknown) => {
-  return (values: unknown) => {
-    const errors = {} as any;
+
+const makeFormValidatorFactory = <Validators extends Record<string, (value: string) => string | undefined>, ValidationKeys extends keyof Validators>(validators: Validators) => <Rules>(config: Record<keyof Rules, ValidationKeys[]>) => {
+  return (values: Record<keyof Rules, string>) => {
+    const errors = {} as Record<keyof Rules, string | undefined>;
 
     for (const key in config) {
       for (const validator of config[key]) {
