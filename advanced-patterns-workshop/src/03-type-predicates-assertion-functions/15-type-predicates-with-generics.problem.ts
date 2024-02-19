@@ -6,8 +6,8 @@ import { Equal, Expect } from "../helpers/type-utils";
  * By changing the type definition of this interface,
  * you can fix all the errors below.
  */
-interface DOMNodeExtractorConfig<T, Result> {
-  isNode: (node: unknown) => boolean;
+interface DOMNodeExtractorConfig<T , Result> {
+  isNode: (node: unknown) => node is T;
   transform: (node: T) => Result;
 }
 
