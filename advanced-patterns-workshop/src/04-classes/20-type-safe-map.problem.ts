@@ -14,11 +14,13 @@ class TypeSafeStringMap<TMap extends Record<string, string> = {}> {
     this.map = {} as TMap;
   }
 
+
   get(key: keyof TMap): string {
     return this.map[key];
   }
 
-  set<K extends string>(key: K, value: string): unknown {
+
+  set<K extends string>(key: K, value: string): TypeSafeStringMap<TMap & Record<K, string>> {
     (this.map[key] as any) = value;
 
     return this;
