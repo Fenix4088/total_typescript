@@ -1,6 +1,10 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
-export function makeEventHandlers(obj: unknown) {
+type ConfigObj<TConfig extends object> = {
+  [K in keyof TConfig]: (name: K) => void;
+}
+
+export function makeEventHandlers<TConfig extends object>(obj: ConfigObj<TConfig>) {
   return obj;
 }
 

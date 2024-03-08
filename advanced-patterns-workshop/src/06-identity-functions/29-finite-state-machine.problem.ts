@@ -1,4 +1,4 @@
-// import { F } from "ts-toolbelt";
+import { F } from "ts-toolbelt";
 
 /**
  * Clue: F.NoInfer is part of the solution!
@@ -6,10 +6,12 @@
  * You'll need to modify the interface below
  * to get it to work.
  */
+
+
 interface FSMConfig<TState extends string> {
-  initial: TState;
+  initial: F.NoInfer<TState>;
   states: Record<
-    TState,
+  TState,
     {
       onEntry?: () => void;
     }
