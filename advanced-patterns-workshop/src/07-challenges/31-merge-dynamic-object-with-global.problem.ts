@@ -1,3 +1,4 @@
+import { string } from "zod";
 import { Equal, Expect } from "../helpers/type-utils";
 
 const addAllOfThisToWindow = {
@@ -6,8 +7,16 @@ const addAllOfThisToWindow = {
   multiply: (a: number, b: number) => a * b,
   divide: (a: number, b: number) => a / b,
 };
+  
 
 Object.assign(window, addAllOfThisToWindow);
+
+declare global {
+
+  type MyCustomType = typeof addAllOfThisToWindow;
+  interface Window extends MyCustomType {
+  }
+}
 
 type tests = [
   Expect<Equal<typeof window.add, (a: number, b: number) => number>>,

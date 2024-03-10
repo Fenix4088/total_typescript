@@ -11,3 +11,13 @@ import React from "react";
  */
 
 const element = <custom-element>hello world</custom-element>;
+
+<h1></h1>
+declare global { 
+      namespace React.JSX {
+            interface IntrinsicElements {
+                  ["custom-element"]: React.DetailedHTMLProps<React.HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>
+            }
+      }
+
+}

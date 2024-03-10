@@ -1,13 +1,15 @@
 import { Equal, Expect } from "../helpers/type-utils";
 
-interface Fruit {
+type Fruit  = {
   name: string;
   price: number;
 }
 
-export const wrapFruit = (fruits: unknown[]) => {
-  const getFruit = (name: unknown) => {
-    return fruits.find((fruit) => fruit.name === name);
+type Fruits = readonly Fruit[];
+
+export const wrapFruit = <const TFruits extends Fruits>(fruits: TFruits) => {
+  const getFruit = <const TName extends TFruits[number]["name"]>(name: TName) => {
+    return fruits.find((fruit) => fruit.name === name) as Extract<TFruits[number], { name: TName }>;
   };
 
   return {
