@@ -9,11 +9,16 @@
  */
 
 type ModalProps = {
-  variant: "no-title" | "title";
-  title?: string;
+  variant: "no-title";
 };
 
-export const Modal = (props: ModalProps) => {
+type PropsWithTitle = {
+  variant: "title";
+  title: string;
+}
+
+
+export const Modal = (props: ModalProps | PropsWithTitle) => {
   if (props.variant === "no-title") {
     return <div>No title</div>;
   } else {
@@ -25,6 +30,8 @@ export const Test = () => {
   return (
     <div>
       <Modal variant="title" title="Hello" />
+      {/* @ts-expect-error */}
+      <Modal variant="title" />
       <Modal variant="no-title" />
 
       {/* @ts-expect-error */}

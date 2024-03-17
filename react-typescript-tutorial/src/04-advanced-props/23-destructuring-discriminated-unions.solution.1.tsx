@@ -11,11 +11,12 @@ type ModalProps =
  * Sadly, this doesn't work - TypeScript can't figure out from narrowing
  * the destructured variant that the title is now available.
  */
-export const Modal = ({ variant, ...props }: ModalProps) => {
-  if (variant === "no-title") {
+export const Modal = (props: ModalProps) => {
+  if (props.variant === "no-title") {
     return <div>No title</div>;
   } else {
-    return <div>Title: {props.title}</div>;
+    const { title } = props;
+    return <div>Title: {title}</div>;
   }
 };
 
