@@ -1,9 +1,27 @@
 import { useEffect, useState } from "react";
 
+// export type Result<T> = [
+//   "loading" | "success" | "error",
+//   T | Error | undefined,
+// ];
+
 export type Result<T> = [
-  "loading" | "success" | "error",
-  T | Error | undefined,
+  "loading",
+  undefined?,
+] | [
+  "success",
+  T,
+] | [
+  "error",
+  Error,
 ];
+
+
+// enum Status {
+//   Loading = "loading",
+//   Success = "success",
+//   Error = "error",
+// }
 
 /**
  * Let's look at one more example of discriminated unions. This time, we're

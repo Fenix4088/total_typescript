@@ -11,10 +11,8 @@ import { Equal, Expect } from "../helpers/type-utils";
  * 1. Find a way to fix the errors below.
  */
 
-export const useId = (defaultId: string) => {
-  const [id, setId] = useState(defaultId);
-
-  return [id, setId];
+export const useId = <T>(defaultId: T) => {
+  return useState<T>(defaultId);
 };
 
 const [id, setId] = useId("1");
