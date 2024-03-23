@@ -14,12 +14,12 @@ import { Equal, Expect } from "../helpers/type-utils";
  *
  * 1. Figure out a way to make this work using generics.
  */
-export const useLocalStorage = (prefix: string) => {
+export const useLocalStorage = <TPrefixObj>(prefix: string) => {
   return {
-    get: (key: string) => {
+    get: (key: string): TPrefixObj | null => {
       return JSON.parse(window.localStorage.getItem(prefix + key) || "null");
     },
-    set: (key: string, value: any) => {
+    set: (key: string, value: TPrefixObj) => {
       window.localStorage.setItem(prefix + key, JSON.stringify(value));
     },
   };

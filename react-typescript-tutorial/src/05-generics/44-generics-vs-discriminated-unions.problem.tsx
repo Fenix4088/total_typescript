@@ -26,8 +26,21 @@ export type ModalProps<TVariant extends PossibleVariants> = {
 
 export type PossibleVariants = "with-button" | "without-button";
 
-export const Modal = <TVariant extends PossibleVariants>(
-  props: ModalProps<TVariant>,
+
+type ModalProps2 = (
+  {
+    variant: "with-button";
+    buttonLabel: string;
+    onButtonClick: () => void;
+  } | {
+    variant: "without-button";
+  }
+) & {
+  isOpen: boolean;
+}
+
+export const Modal = (
+  props: ModalProps2,
 ) => {
   // ...
   return null;
