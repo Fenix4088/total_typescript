@@ -27,4 +27,16 @@ export type Example = JSX.IntrinsicElements;
  * 4. Now change it back, before anyone notices.
  */
 
+
+
+ declare global {
+      namespace JSX {
+            interface IntrinsicElements {
+                  myNewElement: {
+                    foo: string;
+                  }
+                }
+      }
+    }
+
 <myNewElement foo="123" />;
